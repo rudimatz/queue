@@ -119,7 +119,7 @@ export const apiPubqClustersRetrieveCached = async ({ api, clusterNumber }: ApiP
     } catch (e) {
       if (e instanceof ResponseError) {
         const body = await readResponseBodyText(e.response.body)
-        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, body, e.cause, e.message, e.name)
+        console.error('API response error from', e.response.url, `HTTP ${e.response.status} (${e.response.statusText})`, body, e.cause, e.message, e.name)
       }
       throw e
     }
@@ -145,7 +145,7 @@ export const apiPubqQueueListCached = async ({ api, params }: ApiPubqQueueListCa
     } catch (e) {
       if (e instanceof ResponseError) {
         const body = await readResponseBodyText(e.response.body)
-        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, body, e.cause, e.message, e.name)
+        console.error('API response error from', e.response.url, `HTTP ${e.response.status} (${e.response.statusText})`, body, e.cause, e.message, e.name)
       }
       throw e
     }

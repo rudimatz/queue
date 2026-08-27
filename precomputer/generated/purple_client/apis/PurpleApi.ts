@@ -969,6 +969,7 @@ export class PurpleApi extends runtime.BaseAPI {
      */
     async apiPubqClustersRetrieveRaw(requestParameters: ApiPubqClustersRetrieveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublicCluster>> {
         const requestOptions = await this.apiPubqClustersRetrieveRequestOpts(requestParameters);
+        console.log("[apiPubqClustersRetrieveRaw] request options", JSON.stringify(requestOptions))
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PublicClusterFromJSON(jsonValue));
