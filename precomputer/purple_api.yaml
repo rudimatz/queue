@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Purple
-  version: '0.1'
+  version: "0.1"
   description: Backend API for the Purple app
 paths:
   /api/pubq/clusters/:
@@ -12,14 +12,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PublicCluster'
-          description: ''
+                  $ref: "#/components/schemas/PublicCluster"
+          description: ""
   /api/pubq/clusters/{number}/:
     get:
       operationId: api_pubq_clusters_retrieve
@@ -36,12 +36,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PublicCluster'
-          description: ''
+                $ref: "#/components/schemas/PublicCluster"
+          description: ""
   /api/pubq/queue/:
     get:
       operationId: api_pubq_queue_list
@@ -68,25 +68,25 @@ paths:
           name: pending_final_review
           schema:
             type: boolean
-          description: 'Filter by pending final review status. First filter by existing
+          description: "Filter by pending final review status. First filter by existing
             final_review_editor assignment. Additional filters: True returns drafts
             with at least one pending author approval (FinalApproval) or at least one
             uncompleted action holder. False returns drafts where at least one author
             approval exists, all author approvals are done, and no action holders are
-            uncompleted.'
+            uncompleted."
       tags:
         - purple
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/PublicQueueItem'
-          description: ''
+                  $ref: "#/components/schemas/PublicQueueItem"
+          description: ""
   /api/rpc/assignments/:
     get:
       operationId: assignments_list
@@ -102,14 +102,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Assignment'
-          description: ''
+                  $ref: "#/components/schemas/Assignment"
+          description: ""
     post:
       operationId: assignments_create
       tags:
@@ -118,17 +118,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AssignmentRequest'
+              $ref: "#/components/schemas/AssignmentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Assignment'
-          description: ''
+                $ref: "#/components/schemas/Assignment"
+          description: ""
   /api/rpc/assignments/{id}/:
     get:
       operationId: assignments_retrieve
@@ -144,12 +144,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Assignment'
-          description: ''
+                $ref: "#/components/schemas/Assignment"
+          description: ""
     put:
       operationId: assignments_update
       parameters:
@@ -165,17 +165,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AssignmentRequest'
+              $ref: "#/components/schemas/AssignmentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Assignment'
-          description: ''
+                $ref: "#/components/schemas/Assignment"
+          description: ""
     patch:
       operationId: assignments_partial_update
       parameters:
@@ -191,16 +191,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedAssignmentRequest'
+              $ref: "#/components/schemas/PatchedAssignmentRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Assignment'
-          description: ''
+                $ref: "#/components/schemas/Assignment"
+          description: ""
     delete:
       operationId: assignments_destroy
       parameters:
@@ -215,7 +215,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/capabilities/:
     get:
@@ -225,14 +225,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Capability'
-          description: ''
+                  $ref: "#/components/schemas/Capability"
+          description: ""
   /api/rpc/capabilities/{slug}/:
     get:
       operationId: capabilities_retrieve
@@ -248,12 +248,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Capability'
-          description: ''
+                $ref: "#/components/schemas/Capability"
+          description: ""
   /api/rpc/clusters/:
     get:
       operationId: clusters_list
@@ -275,14 +275,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Cluster'
-          description: ''
+                  $ref: "#/components/schemas/Cluster"
+          description: ""
     post:
       operationId: clusters_create
       tags:
@@ -291,17 +291,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterRequest'
+              $ref: "#/components/schemas/ClusterRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
   /api/rpc/clusters/{number}/:
     get:
       operationId: clusters_retrieve
@@ -318,12 +318,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
     put:
       operationId: clusters_update
       parameters:
@@ -340,17 +340,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterRequest'
+              $ref: "#/components/schemas/ClusterRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
     patch:
       operationId: clusters_partial_update
       parameters:
@@ -367,16 +367,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedClusterRequest'
+              $ref: "#/components/schemas/PatchedClusterRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
   /api/rpc/clusters/{number}/add-document/:
     post:
       operationId: clusters_add_document
@@ -395,7 +395,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterAddRemoveDocumentRequest'
+              $ref: "#/components/schemas/ClusterAddRemoveDocumentRequest"
             examples:
               AddDocumentToCluster:
                 value:
@@ -405,12 +405,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
   /api/rpc/clusters/{number}/history/:
     get:
       operationId: clusters_history_list
@@ -440,12 +440,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedClusterMemberHistoryList'
-          description: ''
+                $ref: "#/components/schemas/PaginatedClusterMemberHistoryList"
+          description: ""
   /api/rpc/clusters/{number}/order/:
     post:
       operationId: clusters_reorder_documents
@@ -464,7 +464,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterReorderDocumentsRequest'
+              $ref: "#/components/schemas/ClusterReorderDocumentsRequest"
             examples:
               ReorderDocumentsInCluster:
                 value:
@@ -477,12 +477,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
   /api/rpc/clusters/{number}/remove-document/:
     post:
       operationId: clusters_remove_document
@@ -501,7 +501,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ClusterAddRemoveDocumentRequest'
+              $ref: "#/components/schemas/ClusterAddRemoveDocumentRequest"
             examples:
               RemoveDocumentFromCluster:
                 value:
@@ -511,12 +511,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Cluster'
-          description: ''
+                $ref: "#/components/schemas/Cluster"
+          description: ""
   /api/rpc/doc_relationship_names/:
     get:
       operationId: doc_relationship_names_list
@@ -531,14 +531,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Name'
-          description: ''
+                  $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/doc_relationship_names/{slug}/:
     get:
       operationId: doc_relationship_names_retrieve
@@ -559,12 +559,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Name'
-          description: ''
+                $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/documents/:
     get:
       operationId: documents_list
@@ -607,12 +607,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedRfcToBeList'
-          description: ''
+                $ref: "#/components/schemas/PaginatedRfcToBeList"
+          description: ""
     post:
       operationId: documents_create
       tags:
@@ -621,17 +621,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RfcToBeRequest'
+              $ref: "#/components/schemas/RfcToBeRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBe'
-          description: ''
+                $ref: "#/components/schemas/RfcToBe"
+          description: ""
   /api/rpc/documents/{draft__name}/:
     get:
       operationId: documents_retrieve
@@ -647,12 +647,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBe'
-          description: ''
+                $ref: "#/components/schemas/RfcToBe"
+          description: ""
     put:
       operationId: documents_update
       parameters:
@@ -668,17 +668,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RfcToBeRequest'
+              $ref: "#/components/schemas/RfcToBeRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBe'
-          description: ''
+                $ref: "#/components/schemas/RfcToBe"
+          description: ""
     patch:
       operationId: documents_partial_update
       parameters:
@@ -694,16 +694,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedRfcToBeRequest'
+              $ref: "#/components/schemas/PatchedRfcToBeRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBe'
-          description: ''
+                $ref: "#/components/schemas/RfcToBe"
+          description: ""
     delete:
       operationId: documents_destroy
       parameters:
@@ -718,7 +718,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft__name}/enqueue/:
     post:
@@ -738,12 +738,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBe'
-          description: ''
+                $ref: "#/components/schemas/RfcToBe"
+          description: ""
   /api/rpc/documents/{draft__name}/history/:
     get:
       operationId: documents_history_list
@@ -759,14 +759,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/History'
-          description: ''
+                  $ref: "#/components/schemas/History"
+          description: ""
   /api/rpc/documents/{draft__name}/manual_block/:
     post:
       operationId: documents_manual_block
@@ -783,11 +783,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ManualBlockRequestRequest'
+              $ref: "#/components/schemas/ManualBlockRequestRequest"
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
     delete:
       operationId: documents_manual_unblock
@@ -803,7 +803,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft__name}/pub_status/:
     get:
@@ -820,12 +820,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PublishRfcStatus'
-          description: ''
+                $ref: "#/components/schemas/PublishRfcStatus"
+          description: ""
   /api/rpc/documents/{draft__name}/pub_status_reset/:
     delete:
       operationId: documents_pub_status_clear_failed
@@ -841,7 +841,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft__name}/publish/:
     post:
@@ -859,24 +859,24 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PublishRfcRequest'
+              $ref: "#/components/schemas/PublishRfcRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           description: No response body
-        '400':
+        "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PublishValidationError'
+                $ref: "#/components/schemas/PublishValidationError"
           description: Document is not ready to publish
-        '403':
+        "403":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PublishPermissionDenied'
+                $ref: "#/components/schemas/PublishPermissionDenied"
           description: User is not permitted to publish this RFC
   /api/rpc/documents/{draft__name}/sync_metadata/:
     post:
@@ -896,7 +896,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           description: No response body
   /api/rpc/documents/{draft_name}/action_holders/:
     get:
@@ -913,14 +913,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ActionHolder'
-          description: ''
+                  $ref: "#/components/schemas/ActionHolder"
+          description: ""
     post:
       operationId: documents_action_holders_create
       description: ViewSet for ActionHolder entries related to a draft
@@ -936,16 +936,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateActionHolderRequest'
+              $ref: "#/components/schemas/CreateActionHolderRequest"
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateActionHolder'
-          description: ''
+                $ref: "#/components/schemas/CreateActionHolder"
+          description: ""
   /api/rpc/documents/{draft_name}/action_holders/{id}/:
     get:
       operationId: documents_action_holders_retrieve
@@ -967,12 +967,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActionHolder'
-          description: ''
+                $ref: "#/components/schemas/ActionHolder"
+          description: ""
     put:
       operationId: documents_action_holders_update
       description: ViewSet for ActionHolder entries related to a draft
@@ -994,16 +994,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ActionHolderRequest'
+              $ref: "#/components/schemas/ActionHolderRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActionHolder'
-          description: ''
+                $ref: "#/components/schemas/ActionHolder"
+          description: ""
     patch:
       operationId: documents_action_holders_partial_update
       description: ViewSet for ActionHolder entries related to a draft
@@ -1025,16 +1025,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedActionHolderRequest'
+              $ref: "#/components/schemas/PatchedActionHolderRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ActionHolder'
-          description: ''
+                $ref: "#/components/schemas/ActionHolder"
+          description: ""
     delete:
       operationId: documents_action_holders_destroy
       description: ViewSet for ActionHolder entries related to a draft
@@ -1055,7 +1055,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft_name}/additional_emails/:
     get:
@@ -1071,14 +1071,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/AdditionalEmail'
-          description: ''
+                  $ref: "#/components/schemas/AdditionalEmail"
+          description: ""
     post:
       operationId: documents_additional_emails_create
       parameters:
@@ -1093,17 +1093,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AdditionalEmailRequest'
+              $ref: "#/components/schemas/AdditionalEmailRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AdditionalEmail'
-          description: ''
+                $ref: "#/components/schemas/AdditionalEmail"
+          description: ""
   /api/rpc/documents/{draft_name}/additional_emails/{id}/:
     get:
       operationId: documents_additional_emails_retrieve
@@ -1124,12 +1124,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AdditionalEmail'
-          description: ''
+                $ref: "#/components/schemas/AdditionalEmail"
+          description: ""
     put:
       operationId: documents_additional_emails_update
       parameters:
@@ -1150,17 +1150,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AdditionalEmailRequest'
+              $ref: "#/components/schemas/AdditionalEmailRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AdditionalEmail'
-          description: ''
+                $ref: "#/components/schemas/AdditionalEmail"
+          description: ""
     patch:
       operationId: documents_additional_emails_partial_update
       parameters:
@@ -1181,16 +1181,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedAdditionalEmailRequest'
+              $ref: "#/components/schemas/PatchedAdditionalEmailRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AdditionalEmail'
-          description: ''
+                $ref: "#/components/schemas/AdditionalEmail"
+          description: ""
     delete:
       operationId: documents_additional_emails_destroy
       parameters:
@@ -1210,7 +1210,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft_name}/approval_logs/:
     get:
@@ -1226,14 +1226,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/ApprovalLogMessage'
-          description: ''
+                  $ref: "#/components/schemas/ApprovalLogMessage"
+          description: ""
     post:
       operationId: documents_approval_logs_create
       parameters:
@@ -1248,17 +1248,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApprovalLogMessageRequest'
+              $ref: "#/components/schemas/ApprovalLogMessageRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApprovalLogMessage'
-          description: ''
+                $ref: "#/components/schemas/ApprovalLogMessage"
+          description: ""
   /api/rpc/documents/{draft_name}/approval_logs/{id}/:
     get:
       operationId: documents_approval_logs_retrieve
@@ -1279,12 +1279,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApprovalLogMessage'
-          description: ''
+                $ref: "#/components/schemas/ApprovalLogMessage"
+          description: ""
     put:
       operationId: documents_approval_logs_update
       parameters:
@@ -1305,17 +1305,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/ApprovalLogMessageRequest'
+              $ref: "#/components/schemas/ApprovalLogMessageRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApprovalLogMessage'
-          description: ''
+                $ref: "#/components/schemas/ApprovalLogMessage"
+          description: ""
     patch:
       operationId: documents_approval_logs_partial_update
       parameters:
@@ -1336,16 +1336,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedApprovalLogMessageRequest'
+              $ref: "#/components/schemas/PatchedApprovalLogMessageRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ApprovalLogMessage'
-          description: ''
+                $ref: "#/components/schemas/ApprovalLogMessage"
+          description: ""
     delete:
       operationId: documents_approval_logs_destroy
       parameters:
@@ -1365,7 +1365,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft_name}/assignment-timeline/:
     get:
@@ -1386,12 +1386,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AssignmentTimeline'
-          description: ''
+                $ref: "#/components/schemas/AssignmentTimeline"
+          description: ""
   /api/rpc/documents/{draft_name}/assignments/:
     get:
       operationId: documents_assignments_list
@@ -1407,14 +1407,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/DocumentAssignment'
-          description: ''
+                  $ref: "#/components/schemas/DocumentAssignment"
+          description: ""
   /api/rpc/documents/{draft_name}/authors/:
     get:
       operationId: documents_authors_list
@@ -1429,14 +1429,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RfcAuthor'
-          description: ''
+                  $ref: "#/components/schemas/RfcAuthor"
+          description: ""
     post:
       operationId: documents_authors_create
       parameters:
@@ -1451,17 +1451,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRfcAuthorRequest'
+              $ref: "#/components/schemas/CreateRfcAuthorRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateRfcAuthor'
-          description: ''
+                $ref: "#/components/schemas/CreateRfcAuthor"
+          description: ""
   /api/rpc/documents/{draft_name}/authors/{id}/:
     get:
       operationId: documents_authors_retrieve
@@ -1482,12 +1482,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcAuthor'
-          description: ''
+                $ref: "#/components/schemas/RfcAuthor"
+          description: ""
     put:
       operationId: documents_authors_update
       parameters:
@@ -1508,17 +1508,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RfcAuthorRequest'
+              $ref: "#/components/schemas/RfcAuthorRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcAuthor'
-          description: ''
+                $ref: "#/components/schemas/RfcAuthor"
+          description: ""
     patch:
       operationId: documents_authors_partial_update
       parameters:
@@ -1539,16 +1539,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedRfcAuthorRequest'
+              $ref: "#/components/schemas/PatchedRfcAuthorRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcAuthor'
-          description: ''
+                $ref: "#/components/schemas/RfcAuthor"
+          description: ""
     delete:
       operationId: documents_authors_destroy
       parameters:
@@ -1568,7 +1568,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft_name}/authors/order/:
     post:
@@ -1585,21 +1585,21 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AuthorOrderRequest'
+              $ref: "#/components/schemas/AuthorOrderRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AuthorOrderStatus'
+                $ref: "#/components/schemas/AuthorOrderStatus"
               examples:
                 Success:
                   value:
                     status: OK
-          description: ''
+          description: ""
   /api/rpc/documents/{draft_name}/comments/:
     get:
       operationId: documents_comments_list
@@ -1627,12 +1627,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedDocumentCommentList'
-          description: ''
+                $ref: "#/components/schemas/PaginatedDocumentCommentList"
+          description: ""
     post:
       operationId: documents_comments_create
       description: ViewSet for comments on an RfcToBe or datatracker Document
@@ -1648,17 +1648,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DocumentCommentRequest'
+              $ref: "#/components/schemas/DocumentCommentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DocumentComment'
-          description: ''
+                $ref: "#/components/schemas/DocumentComment"
+          description: ""
   /api/rpc/documents/{draft_name}/comments/{id}/:
     put:
       operationId: documents_comments_update
@@ -1681,17 +1681,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/DocumentCommentRequest'
+              $ref: "#/components/schemas/DocumentCommentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DocumentComment'
-          description: ''
+                $ref: "#/components/schemas/DocumentComment"
+          description: ""
     patch:
       operationId: documents_comments_partial_update
       description: ViewSet for comments on an RfcToBe or datatracker Document
@@ -1713,16 +1713,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedDocumentCommentRequest'
+              $ref: "#/components/schemas/PatchedDocumentCommentRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DocumentComment'
-          description: ''
+                $ref: "#/components/schemas/DocumentComment"
+          description: ""
   /api/rpc/documents/{draft_name}/final_approvals/:
     get:
       operationId: documents_final_approvals_list
@@ -1745,14 +1745,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/FinalApproval'
-          description: ''
+                  $ref: "#/components/schemas/FinalApproval"
+          description: ""
     post:
       operationId: documents_final_approvals_create
       parameters:
@@ -1767,17 +1767,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateFinalApprovalRequest'
+              $ref: "#/components/schemas/CreateFinalApprovalRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateFinalApproval'
-          description: ''
+                $ref: "#/components/schemas/CreateFinalApproval"
+          description: ""
   /api/rpc/documents/{draft_name}/final_approvals/{id}/:
     get:
       operationId: documents_final_approvals_retrieve
@@ -1798,12 +1798,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FinalApproval'
-          description: ''
+                $ref: "#/components/schemas/FinalApproval"
+          description: ""
     put:
       operationId: documents_final_approvals_update
       parameters:
@@ -1824,16 +1824,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/FinalApprovalRequest'
+              $ref: "#/components/schemas/FinalApprovalRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FinalApproval'
-          description: ''
+                $ref: "#/components/schemas/FinalApproval"
+          description: ""
     patch:
       operationId: documents_final_approvals_partial_update
       parameters:
@@ -1854,16 +1854,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedFinalApprovalRequest'
+              $ref: "#/components/schemas/PatchedFinalApprovalRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/FinalApproval'
-          description: ''
+                $ref: "#/components/schemas/FinalApproval"
+          description: ""
     delete:
       operationId: documents_final_approvals_destroy
       parameters:
@@ -1883,7 +1883,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft_name}/mail:
     post:
@@ -1900,17 +1900,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MailMessageRequest'
+              $ref: "#/components/schemas/MailMessageRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MailResponse'
-          description: ''
+                $ref: "#/components/schemas/MailResponse"
+          description: ""
   /api/rpc/documents/{draft_name}/metadata_validation_results/:
     get:
       operationId: documents_metadata_validation_results_list
@@ -1925,14 +1925,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/MetadataValidationResults'
-          description: ''
+                  $ref: "#/components/schemas/MetadataValidationResults"
+          description: ""
     post:
       operationId: metadata_validation_results_create
       description: Create a pending metadata validation result and enqueue task
@@ -1947,24 +1947,24 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetadataValidationResults'
-          description: ''
-        '200':
+                $ref: "#/components/schemas/MetadataValidationResults"
+          description: ""
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetadataValidationResults'
-          description: ''
-        '404':
+                $ref: "#/components/schemas/MetadataValidationResults"
+          description: ""
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBeNotFoundResponse'
-          description: ''
+                $ref: "#/components/schemas/RfcToBeNotFoundResponse"
+          description: ""
   /api/rpc/documents/{draft_name}/metadata_validation_results/{head_sha}/:
     get:
       operationId: documents_metadata_validation_results_retrieve
@@ -1985,12 +1985,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetadataValidationResults'
-          description: ''
+                $ref: "#/components/schemas/MetadataValidationResults"
+          description: ""
     delete:
       operationId: metadata_validation_results_delete
       description: |-
@@ -2014,20 +2014,20 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
-        '400':
+        "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteMetadataBadRequestResponse'
-          description: ''
-        '404':
+                $ref: "#/components/schemas/DeleteMetadataBadRequestResponse"
+          description: ""
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DeleteMetadataNotFoundResponse'
-          description: ''
+                $ref: "#/components/schemas/DeleteMetadataNotFoundResponse"
+          description: ""
   /api/rpc/documents/{draft_name}/metadata_validation_results/sync/:
     post:
       operationId: metadata_validation_results_sync
@@ -2046,29 +2046,29 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SyncMetadataRequestRequest'
+              $ref: "#/components/schemas/SyncMetadataRequestRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MetadataValidationResults'
-          description: ''
-        '404':
+                $ref: "#/components/schemas/MetadataValidationResults"
+          description: ""
+        "404":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SyncMetadataNotFoundResponse'
-          description: ''
-        '400':
+                $ref: "#/components/schemas/SyncMetadataNotFoundResponse"
+          description: ""
+        "400":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SyncMetadataBadRequestResponse'
-          description: ''
+                $ref: "#/components/schemas/SyncMetadataBadRequestResponse"
+          description: ""
   /api/rpc/documents/{draft_name}/references/:
     get:
       operationId: documents_references_list
@@ -2088,14 +2088,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                  $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     post:
       operationId: documents_references_create
       parameters:
@@ -2110,17 +2110,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RpcRelatedDocumentRequest'
+              $ref: "#/components/schemas/RpcRelatedDocumentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
   /api/rpc/documents/{draft_name}/references/{id}/:
     get:
       operationId: documents_references_retrieve
@@ -2141,12 +2141,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     put:
       operationId: documents_references_update
       parameters:
@@ -2167,17 +2167,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RpcRelatedDocumentRequest'
+              $ref: "#/components/schemas/RpcRelatedDocumentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     patch:
       operationId: documents_references_partial_update
       parameters:
@@ -2198,16 +2198,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedRpcRelatedDocumentRequest'
+              $ref: "#/components/schemas/PatchedRpcRelatedDocumentRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     delete:
       operationId: documents_references_destroy
       parameters:
@@ -2227,7 +2227,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/{draft_name}/related/:
     get:
@@ -2250,14 +2250,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                  $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     post:
       operationId: documents_related_create
       parameters:
@@ -2272,7 +2272,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRpcRelatedDocumentRequest'
+              $ref: "#/components/schemas/CreateRpcRelatedDocumentRequest"
             examples:
               CreateRelatedDocument:
                 value:
@@ -2283,11 +2283,11 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
+                $ref: "#/components/schemas/RpcRelatedDocument"
               examples:
                 CreatedRelatedDocumentResponse:
                   value:
@@ -2296,7 +2296,7 @@ paths:
                     draft_name: draft-source-document
                     target_draft_name: draft-lorem-ipsum-dolor-sit-amet
                   summary: Created Related Document Response
-          description: ''
+          description: ""
   /api/rpc/documents/{draft_name}/related/{id}/:
     get:
       operationId: documents_related_retrieve
@@ -2317,12 +2317,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     put:
       operationId: documents_related_update
       parameters:
@@ -2343,17 +2343,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/RpcRelatedDocumentRequest'
+              $ref: "#/components/schemas/RpcRelatedDocumentRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     patch:
       operationId: documents_related_partial_update
       parameters:
@@ -2374,16 +2374,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedRpcRelatedDocumentRequest'
+              $ref: "#/components/schemas/PatchedRpcRelatedDocumentRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRelatedDocument'
-          description: ''
+                $ref: "#/components/schemas/RpcRelatedDocument"
+          description: ""
     delete:
       operationId: documents_related_destroy
       parameters:
@@ -2403,7 +2403,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/documents/search/:
     get:
@@ -2450,12 +2450,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedRfcToBeList'
-          description: ''
+                $ref: "#/components/schemas/PaginatedRfcToBeList"
+          description: ""
   /api/rpc/iana_statuses/:
     get:
       operationId: iana_statuses_list
@@ -2465,14 +2465,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/IanaStatus'
-          description: ''
+                  $ref: "#/components/schemas/IanaStatus"
+          description: ""
   /api/rpc/labels/:
     get:
       operationId: labels_list
@@ -2481,14 +2481,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Label'
-          description: ''
+                  $ref: "#/components/schemas/Label"
+          description: ""
     post:
       operationId: labels_create
       tags:
@@ -2497,17 +2497,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LabelRequest'
+              $ref: "#/components/schemas/LabelRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Label'
-          description: ''
+                $ref: "#/components/schemas/Label"
+          description: ""
   /api/rpc/labels/{id}/:
     get:
       operationId: labels_retrieve
@@ -2523,12 +2523,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Label'
-          description: ''
+                $ref: "#/components/schemas/Label"
+          description: ""
     put:
       operationId: labels_update
       parameters:
@@ -2544,17 +2544,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/LabelRequest'
+              $ref: "#/components/schemas/LabelRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Label'
-          description: ''
+                $ref: "#/components/schemas/Label"
+          description: ""
     patch:
       operationId: labels_partial_update
       parameters:
@@ -2570,16 +2570,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedLabelRequest'
+              $ref: "#/components/schemas/PatchedLabelRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Label'
-          description: ''
+                $ref: "#/components/schemas/Label"
+          description: ""
     delete:
       operationId: labels_destroy
       parameters:
@@ -2594,7 +2594,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/mail:
     post:
@@ -2605,17 +2605,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/MailMessageRequest'
+              $ref: "#/components/schemas/MailMessageRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/MailResponse'
-          description: ''
+                $ref: "#/components/schemas/MailResponse"
+          description: ""
   /api/rpc/mailtemplate/{rfctobe_id}/:
     get:
       operationId: mailtemplate_list
@@ -2630,14 +2630,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/MailTemplate'
-          description: ''
+                  $ref: "#/components/schemas/MailTemplate"
+          description: ""
   /api/rpc/profile/:
     get:
       operationId: profile
@@ -2647,12 +2647,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Profile'
-          description: ''
+                $ref: "#/components/schemas/Profile"
+          description: ""
   /api/rpc/profile/{rpc_person_id}:
     get:
       operationId: profile_retrieve_demo_only
@@ -2667,13 +2667,13 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: object
                 additionalProperties: {}
-          description: ''
+          description: ""
   /api/rpc/queue/:
     get:
       operationId: queue_list
@@ -2700,25 +2700,25 @@ paths:
           name: pending_final_review
           schema:
             type: boolean
-          description: 'Filter by pending final review status. First filter by existing
+          description: "Filter by pending final review status. First filter by existing
             final_review_editor assignment. Additional filters: True returns drafts
             with at least one pending author approval (FinalApproval) or at least one
             uncompleted action holder. False returns drafts where at least one author
             approval exists, all author approvals are done, and no action holders are
-            uncompleted.'
+            uncompleted."
       tags:
         - purple
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/QueueItem'
-          description: ''
+                  $ref: "#/components/schemas/QueueItem"
+          description: ""
   /api/rpc/queue/counts/:
     get:
       operationId: queue_counts
@@ -2728,12 +2728,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QueueCounts'
-          description: ''
+                $ref: "#/components/schemas/QueueCounts"
+          description: ""
   /api/rpc/rpc_person/:
     get:
       operationId: rpc_person_list
@@ -2747,14 +2747,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RpcPerson'
-          description: ''
+                  $ref: "#/components/schemas/RpcPerson"
+          description: ""
   /api/rpc/rpc_person/{person_id}/assignments/:
     get:
       operationId: rpc_person_assignments_list
@@ -2773,14 +2773,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/NestedAssignment'
-          description: ''
+                  $ref: "#/components/schemas/NestedAssignment"
+          description: ""
   /api/rpc/rpc_person/{id}/:
     get:
       operationId: rpc_person_retrieve
@@ -2796,12 +2796,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcPerson'
-          description: ''
+                $ref: "#/components/schemas/RpcPerson"
+          description: ""
   /api/rpc/rpc_roles/:
     get:
       operationId: rpc_roles_list
@@ -2810,14 +2810,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RpcRole'
-          description: ''
+                  $ref: "#/components/schemas/RpcRole"
+          description: ""
   /api/rpc/rpc_roles/{slug}/:
     get:
       operationId: rpc_roles_retrieve
@@ -2833,12 +2833,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RpcRole'
-          description: ''
+                $ref: "#/components/schemas/RpcRole"
+          description: ""
   /api/rpc/search/datatrackerpersons/:
     get:
       operationId: search_datatrackerpersons
@@ -2869,12 +2869,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/PaginatedBaseDatatrackerPersonList'
-          description: ''
+                $ref: "#/components/schemas/PaginatedBaseDatatrackerPersonList"
+          description: ""
   /api/rpc/source_format_names/:
     get:
       operationId: source_format_names_list
@@ -2883,14 +2883,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Name'
-          description: ''
+                  $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/source_format_names/{slug}/:
     get:
       operationId: source_format_names_retrieve
@@ -2906,12 +2906,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Name'
-          description: ''
+                $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/stats/label/:
     get:
       operationId: stats_labels
@@ -2920,12 +2920,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/LabelStats'
-          description: ''
+                $ref: "#/components/schemas/LabelStats"
+          description: ""
   /api/rpc/stats/queue/:
     get:
       operationId: stats_queue
@@ -2954,12 +2954,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QueueStats'
-          description: ''
+                $ref: "#/components/schemas/QueueStats"
+          description: ""
   /api/rpc/stats/queue-counts/:
     get:
       operationId: stats_queue_counts
@@ -2986,12 +2986,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QueueCountStats'
-          description: ''
+                $ref: "#/components/schemas/QueueCountStats"
+          description: ""
   /api/rpc/stats/queue-published/:
     get:
       operationId: stats_queue_published
@@ -3018,12 +3018,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QueuePublishedStats'
-          description: ''
+                $ref: "#/components/schemas/QueuePublishedStats"
+          description: ""
   /api/rpc/std_level_names/:
     get:
       operationId: std_level_names_list
@@ -3032,14 +3032,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Name'
-          description: ''
+                  $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/std_level_names/{slug}/:
     get:
       operationId: std_level_names_retrieve
@@ -3055,12 +3055,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Name'
-          description: ''
+                $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/stream_names/:
     get:
       operationId: stream_names_list
@@ -3069,14 +3069,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Name'
-          description: ''
+                  $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/stream_names/{slug}/:
     get:
       operationId: stream_names_retrieve
@@ -3092,12 +3092,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Name'
-          description: ''
+                $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/submissions/:
     get:
       operationId: submissions_list
@@ -3143,14 +3143,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SubmissionListItem'
-          description: ''
+                  $ref: "#/components/schemas/SubmissionListItem"
+          description: ""
   /api/rpc/submissions/{document_id}/:
     get:
       operationId: submissions_retrieve
@@ -3165,12 +3165,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Submission'
-          description: ''
+                $ref: "#/components/schemas/Submission"
+          description: ""
   /api/rpc/submissions/{document_id}/import/:
     post:
       operationId: submissions_import
@@ -3187,17 +3187,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateRfcToBeRequest'
+              $ref: "#/components/schemas/CreateRfcToBeRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RfcToBe'
-          description: ''
+                $ref: "#/components/schemas/RfcToBe"
+          description: ""
   /api/rpc/subseries/:
     get:
       operationId: subseries_list
@@ -3207,14 +3207,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SubseriesDoc'
-          description: ''
+                  $ref: "#/components/schemas/SubseriesDoc"
+          description: ""
   /api/rpc/subseries/{subseries_slug}/:
     get:
       operationId: subseries_retrieve
@@ -3231,12 +3231,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubseriesDoc'
-          description: ''
+                $ref: "#/components/schemas/SubseriesDoc"
+          description: ""
   /api/rpc/subseries_members/:
     get:
       operationId: subseries_members_list
@@ -3259,14 +3259,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SubseriesMember'
-          description: ''
+                  $ref: "#/components/schemas/SubseriesMember"
+          description: ""
     post:
       operationId: subseries_members_create
       description: ViewSet to track which RfcToBes have been assigned to which subseries
@@ -3276,17 +3276,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/SubseriesMemberRequest'
+              $ref: "#/components/schemas/SubseriesMemberRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubseriesMember'
-          description: ''
+                $ref: "#/components/schemas/SubseriesMember"
+          description: ""
   /api/rpc/subseries_members/{id}/:
     get:
       operationId: subseries_members_retrieve
@@ -3303,12 +3303,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubseriesMember'
-          description: ''
+                $ref: "#/components/schemas/SubseriesMember"
+          description: ""
     patch:
       operationId: subseries_members_partial_update
       description: ViewSet to track which RfcToBes have been assigned to which subseries
@@ -3325,16 +3325,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedSubseriesMemberRequest'
+              $ref: "#/components/schemas/PatchedSubseriesMemberRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubseriesMember'
-          description: ''
+                $ref: "#/components/schemas/SubseriesMember"
+          description: ""
     delete:
       operationId: subseries_members_destroy
       description: ViewSet to track which RfcToBes have been assigned to which subseries
@@ -3350,7 +3350,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/subseries_types/:
     get:
@@ -3361,14 +3361,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SubseriesTypeName'
-          description: ''
+                  $ref: "#/components/schemas/SubseriesTypeName"
+          description: ""
   /api/rpc/subseries_types/{slug}/:
     get:
       operationId: subseries_types_retrieve
@@ -3385,12 +3385,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SubseriesTypeName'
-          description: ''
+                $ref: "#/components/schemas/SubseriesTypeName"
+          description: ""
   /api/rpc/tlp_boilerplate_choice_names/:
     get:
       operationId: tlp_boilerplate_choice_names_list
@@ -3399,14 +3399,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Name'
-          description: ''
+                  $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/tlp_boilerplate_choice_names/{slug}/:
     get:
       operationId: tlp_boilerplate_choice_names_retrieve
@@ -3422,12 +3422,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Name'
-          description: ''
+                $ref: "#/components/schemas/Name"
+          description: ""
   /api/rpc/unusable_rfc_numbers/:
     get:
       operationId: unusable_rfc_numbers_list
@@ -3436,14 +3436,14 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/UnusableRfcNumber'
-          description: ''
+                  $ref: "#/components/schemas/UnusableRfcNumber"
+          description: ""
     post:
       operationId: unusable_rfc_numbers_create
       tags:
@@ -3452,17 +3452,17 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/UnusableRfcNumberRequest'
+              $ref: "#/components/schemas/UnusableRfcNumberRequest"
         required: true
       security:
         - cookieAuth: []
       responses:
-        '201':
+        "201":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnusableRfcNumber'
-          description: ''
+                $ref: "#/components/schemas/UnusableRfcNumber"
+          description: ""
   /api/rpc/unusable_rfc_numbers/{number}/:
     get:
       operationId: unusable_rfc_numbers_retrieve
@@ -3480,12 +3480,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnusableRfcNumber'
-          description: ''
+                $ref: "#/components/schemas/UnusableRfcNumber"
+          description: ""
     patch:
       operationId: unusable_rfc_numbers_partial_update
       description: Allow PATCH operations only for the comment field
@@ -3504,16 +3504,16 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedUnusableRfcNumberRequest'
+              $ref: "#/components/schemas/PatchedUnusableRfcNumberRequest"
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UnusableRfcNumber'
-          description: ''
+                $ref: "#/components/schemas/UnusableRfcNumber"
+          description: ""
     delete:
       operationId: unusable_rfc_numbers_destroy
       parameters:
@@ -3530,7 +3530,7 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '204':
+        "204":
           description: No response body
   /api/rpc/version/:
     get:
@@ -3541,12 +3541,12 @@ paths:
       security:
         - cookieAuth: []
       responses:
-        '200':
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/VersionInfo'
-          description: ''
+                $ref: "#/components/schemas/VersionInfo"
+          description: ""
 components:
   schemas:
     ActionHolder:
@@ -3558,7 +3558,7 @@ components:
           readOnly: true
         person:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         display_name:
           type: string
@@ -3634,11 +3634,11 @@ components:
           readOnly: true
         by:
           allOf:
-            - $ref: '#/components/schemas/DatatrackerPerson'
+            - $ref: "#/components/schemas/DatatrackerPerson"
           readOnly: true
         rfc_to_be:
           allOf:
-            - $ref: '#/components/schemas/MinimalRfcToBe'
+            - $ref: "#/components/schemas/MinimalRfcToBe"
           readOnly: true
         log_message:
           type: string
@@ -3672,7 +3672,7 @@ components:
           type: string
         state:
           allOf:
-            - $ref: '#/components/schemas/StateEnum'
+            - $ref: "#/components/schemas/StateEnum"
           default: assigned
         comment:
           type: string
@@ -3691,7 +3691,7 @@ components:
           type: string
           format: date-time
         by:
-          $ref: '#/components/schemas/DatatrackerPerson'
+          $ref: "#/components/schemas/DatatrackerPerson"
         desc:
           type: string
         model:
@@ -3721,7 +3721,7 @@ components:
           minLength: 1
         state:
           allOf:
-            - $ref: '#/components/schemas/StateEnum'
+            - $ref: "#/components/schemas/StateEnum"
           default: assigned
         comment:
           type: string
@@ -3740,19 +3740,19 @@ components:
         tracks:
           type: array
           items:
-            $ref: '#/components/schemas/TimelineTrack'
+            $ref: "#/components/schemas/TimelineTrack"
         summary:
           type: array
           items:
-            $ref: '#/components/schemas/TimelineBand'
+            $ref: "#/components/schemas/TimelineBand"
         blocked_reasons:
           type: array
           items:
-            $ref: '#/components/schemas/TimelineBand'
+            $ref: "#/components/schemas/TimelineBand"
         legacy:
           type: array
           items:
-            $ref: '#/components/schemas/TimelineBand'
+            $ref: "#/components/schemas/TimelineBand"
       required:
         - blocked_reasons
         - legacy
@@ -3886,7 +3886,7 @@ components:
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/ClusterMember'
+            $ref: "#/components/schemas/ClusterMember"
           readOnly: true
         is_active:
           type: boolean
@@ -3922,7 +3922,7 @@ components:
         references:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRelatedDocument'
+            $ref: "#/components/schemas/RpcRelatedDocument"
           readOnly: true
         is_received:
           type: boolean
@@ -3946,7 +3946,7 @@ components:
           readOnly: true
         final_approval_counts:
           allOf:
-            - $ref: '#/components/schemas/FinalApprovalCounts'
+            - $ref: "#/components/schemas/FinalApprovalCounts"
           nullable: true
           readOnly: true
       required:
@@ -4073,7 +4073,7 @@ components:
           readOnly: true
         person:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         display_name:
           type: string
@@ -4131,7 +4131,7 @@ components:
           readOnly: true
         rfc_to_be:
           allOf:
-            - $ref: '#/components/schemas/MinimalRfcToBe'
+            - $ref: "#/components/schemas/MinimalRfcToBe"
           readOnly: true
         requested:
           type: string
@@ -4139,7 +4139,7 @@ components:
           readOnly: true
         approver:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         approved:
           type: string
@@ -4147,7 +4147,7 @@ components:
           nullable: true
         overriding_approver:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
           nullable: true
         comment:
@@ -4288,7 +4288,7 @@ components:
           maxLength: 1000
         iana_status_slug:
           allOf:
-            - $ref: '#/components/schemas/IanaStatusSlugEnum'
+            - $ref: "#/components/schemas/IanaStatusSlugEnum"
           writeOnly: true
           description: |-
             Set the IANA status by providing the slug identifier. Defaults to 'not_completed' if not provided.
@@ -4392,13 +4392,13 @@ components:
           type: string
           readOnly: true
         state:
-          $ref: '#/components/schemas/StateEnum'
+          $ref: "#/components/schemas/StateEnum"
         comment:
           type: string
         history:
           type: array
           items:
-            $ref: '#/components/schemas/AssignmentHistory'
+            $ref: "#/components/schemas/AssignmentHistory"
           readOnly: true
     DocumentComment:
       type: object
@@ -4411,7 +4411,7 @@ components:
           type: string
         by:
           allOf:
-            - $ref: '#/components/schemas/DatatrackerPerson'
+            - $ref: "#/components/schemas/DatatrackerPerson"
           readOnly: true
         time:
           type: string
@@ -4419,7 +4419,7 @@ components:
           readOnly: true
         last_edit:
           allOf:
-            - $ref: '#/components/schemas/HistoryLastEdit'
+            - $ref: "#/components/schemas/HistoryLastEdit"
           readOnly: true
       required:
         - comment
@@ -4453,7 +4453,7 @@ components:
           description: Number of pages
         intended_std_level:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           nullable: true
           readOnly: true
     FinalApproval:
@@ -4465,7 +4465,7 @@ components:
           readOnly: true
         rfc_to_be:
           allOf:
-            - $ref: '#/components/schemas/MinimalRfcToBe'
+            - $ref: "#/components/schemas/MinimalRfcToBe"
           readOnly: true
         requested:
           type: string
@@ -4473,7 +4473,7 @@ components:
           readOnly: true
         approver:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         approved:
           type: string
@@ -4481,7 +4481,7 @@ components:
           nullable: true
         overriding_approver:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
           nullable: true
         comment:
@@ -4522,7 +4522,7 @@ components:
           type: string
           format: date-time
         by:
-          $ref: '#/components/schemas/DatatrackerPerson'
+          $ref: "#/components/schemas/DatatrackerPerson"
         desc:
           type: string
         model:
@@ -4544,7 +4544,7 @@ components:
       properties:
         by:
           allOf:
-            - $ref: '#/components/schemas/DatatrackerPerson'
+            - $ref: "#/components/schemas/DatatrackerPerson"
           readOnly: true
         time:
           type: string
@@ -4630,7 +4630,7 @@ components:
         is_complexity:
           type: boolean
         color:
-          $ref: '#/components/schemas/ColorEnum'
+          $ref: "#/components/schemas/ColorEnum"
         used:
           type: boolean
         is_public:
@@ -4649,7 +4649,7 @@ components:
         is_complexity:
           type: boolean
         color:
-          $ref: '#/components/schemas/ColorEnum'
+          $ref: "#/components/schemas/ColorEnum"
         used:
           type: boolean
         is_public:
@@ -4676,7 +4676,7 @@ components:
         label_stats:
           type: array
           items:
-            $ref: '#/components/schemas/LabelStat'
+            $ref: "#/components/schemas/LabelStat"
       required:
         - label_stats
     MailMessage:
@@ -4684,7 +4684,7 @@ components:
       description: Mail message serializer
       properties:
         msgtype:
-          $ref: '#/components/schemas/MsgtypeEnum'
+          $ref: "#/components/schemas/MsgtypeEnum"
         to:
           type: string
         cc:
@@ -4704,7 +4704,7 @@ components:
       description: Mail message serializer
       properties:
         msgtype:
-          $ref: '#/components/schemas/MsgtypeEnum'
+          $ref: "#/components/schemas/MsgtypeEnum"
         to:
           type: string
           minLength: 1
@@ -4726,7 +4726,7 @@ components:
       type: object
       properties:
         type:
-          $ref: '#/components/schemas/TypeEnum'
+          $ref: "#/components/schemas/TypeEnum"
         message:
           type: string
       required:
@@ -4739,7 +4739,7 @@ components:
           type: string
           description: human readable text for UI
         template:
-          $ref: '#/components/schemas/MailMessage'
+          $ref: "#/components/schemas/MailMessage"
       required:
         - label
         - template
@@ -4749,7 +4749,7 @@ components:
         comment:
           type: string
           minLength: 1
-          default: ''
+          default: ""
     MetadataTableRow:
       type: object
       properties:
@@ -4758,7 +4758,7 @@ components:
         row_name_list_depth:
           type: integer
         row_value:
-          $ref: '#/components/schemas/MetadataTableRowValue'
+          $ref: "#/components/schemas/MetadataTableRowValue"
       required:
         - row_name
         - row_name_list_depth
@@ -4811,7 +4811,7 @@ components:
         metadata_compare:
           type: array
           items:
-            $ref: '#/components/schemas/MetadataTableRow'
+            $ref: "#/components/schemas/MetadataTableRow"
           readOnly: true
         status:
           type: string
@@ -4908,7 +4908,7 @@ components:
           readOnly: true
         rfc_to_be:
           allOf:
-            - $ref: '#/components/schemas/RfcToBe'
+            - $ref: "#/components/schemas/RfcToBe"
           readOnly: true
         person:
           type: integer
@@ -4917,7 +4917,7 @@ components:
           type: string
         state:
           allOf:
-            - $ref: '#/components/schemas/StateEnum'
+            - $ref: "#/components/schemas/StateEnum"
           default: assigned
         comment:
           type: string
@@ -4957,7 +4957,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/BaseDatatrackerPerson'
+            $ref: "#/components/schemas/BaseDatatrackerPerson"
     PaginatedClusterMemberHistoryList:
       type: object
       required:
@@ -4980,7 +4980,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/ClusterMemberHistory'
+            $ref: "#/components/schemas/ClusterMemberHistory"
     PaginatedDocumentCommentList:
       type: object
       required:
@@ -5003,7 +5003,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/DocumentComment'
+            $ref: "#/components/schemas/DocumentComment"
     PaginatedRfcToBeList:
       type: object
       required:
@@ -5026,7 +5026,7 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/RfcToBe'
+            $ref: "#/components/schemas/RfcToBe"
     PatchedActionHolderRequest:
       type: object
       description: Serialize an ActionHolder with person name
@@ -5074,7 +5074,7 @@ components:
           minLength: 1
         state:
           allOf:
-            - $ref: '#/components/schemas/StateEnum'
+            - $ref: "#/components/schemas/StateEnum"
           default: assigned
         comment:
           type: string
@@ -5135,7 +5135,7 @@ components:
         is_complexity:
           type: boolean
         color:
-          $ref: '#/components/schemas/ColorEnum'
+          $ref: "#/components/schemas/ColorEnum"
         used:
           type: boolean
         is_public:
@@ -5217,7 +5217,7 @@ components:
         authors:
           type: array
           items:
-            $ref: '#/components/schemas/RfcAuthorRequest'
+            $ref: "#/components/schemas/RfcAuthorRequest"
         shepherd_id:
           type: integer
           writeOnly: true
@@ -5241,7 +5241,7 @@ components:
           description: Whether document has consensus (None=unknown)
         iana_status_slug:
           allOf:
-            - $ref: '#/components/schemas/IanaStatusSlugEnum'
+            - $ref: "#/components/schemas/IanaStatusSlugEnum"
           writeOnly: true
           description: |-
             Set the IANA status by providing the slug identifier.
@@ -5335,7 +5335,7 @@ components:
           type: string
           readOnly: true
         state:
-          $ref: '#/components/schemas/StateEnum'
+          $ref: "#/components/schemas/StateEnum"
       required:
         - rfc_to_be
         - role
@@ -5355,7 +5355,7 @@ components:
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/PublicClusterMember'
+            $ref: "#/components/schemas/PublicClusterMember"
           readOnly: true
         is_active:
           type: boolean
@@ -5381,7 +5381,7 @@ components:
         references:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRelatedDocument'
+            $ref: "#/components/schemas/RpcRelatedDocument"
           readOnly: true
         is_received:
           type: boolean
@@ -5405,7 +5405,7 @@ components:
           readOnly: true
         final_approval_counts:
           allOf:
-            - $ref: '#/components/schemas/FinalApprovalCounts'
+            - $ref: "#/components/schemas/FinalApprovalCounts"
           nullable: true
           readOnly: true
       required:
@@ -5448,26 +5448,26 @@ components:
         labels:
           type: array
           items:
-            $ref: '#/components/schemas/Label'
+            $ref: "#/components/schemas/Label"
           readOnly: true
         cluster:
           allOf:
-            - $ref: '#/components/schemas/SimpleCluster'
+            - $ref: "#/components/schemas/SimpleCluster"
           readOnly: true
         assignment_set:
           type: array
           items:
-            $ref: '#/components/schemas/PublicAssignment'
+            $ref: "#/components/schemas/PublicAssignment"
           readOnly: true
         actionholder_set:
           type: array
           items:
-            $ref: '#/components/schemas/ActionHolder'
+            $ref: "#/components/schemas/ActionHolder"
           readOnly: true
         pending_activities:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRole'
+            $ref: "#/components/schemas/RpcRole"
           readOnly: true
         rfc_number:
           type: integer
@@ -5484,25 +5484,25 @@ components:
         final_approval:
           type: array
           items:
-            $ref: '#/components/schemas/FinalApproval'
+            $ref: "#/components/schemas/FinalApproval"
           readOnly: true
         iana_status:
           allOf:
-            - $ref: '#/components/schemas/IanaStatus'
+            - $ref: "#/components/schemas/IanaStatus"
           readOnly: true
         blocking_reasons:
           type: array
           items:
-            $ref: '#/components/schemas/RfcToBeBlockingReason'
+            $ref: "#/components/schemas/RfcToBeBlockingReason"
           readOnly: true
         authors:
           type: array
           items:
-            $ref: '#/components/schemas/PublicQueueAuthor'
+            $ref: "#/components/schemas/PublicQueueAuthor"
         approval_log_message:
           type: array
           items:
-            $ref: '#/components/schemas/ApprovalLogMessage'
+            $ref: "#/components/schemas/ApprovalLogMessage"
           readOnly: true
         stream:
           type: string
@@ -5531,7 +5531,7 @@ components:
         references:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRelatedDocument'
+            $ref: "#/components/schemas/RpcRelatedDocument"
           readOnly: true
         rev:
           type: string
@@ -5571,7 +5571,7 @@ components:
       type: object
       properties:
         status:
-          $ref: '#/components/schemas/PublishRfcStatusStatusEnum'
+          $ref: "#/components/schemas/PublishRfcStatusStatusEnum"
         detail:
           type: string
           maxLength: 1000
@@ -5638,9 +5638,9 @@ components:
       description: Count of RFCs published for one (stream, status) cell of a period.
       properties:
         stream:
-          $ref: '#/components/schemas/PublishedStreamEnum'
+          $ref: "#/components/schemas/PublishedStreamEnum"
         status:
-          $ref: '#/components/schemas/PublishedStatusEnum'
+          $ref: "#/components/schemas/PublishedStatusEnum"
         count:
           type: integer
       required:
@@ -5714,7 +5714,7 @@ components:
         periods:
           type: array
           items:
-            $ref: '#/components/schemas/QueueCountStatPeriod'
+            $ref: "#/components/schemas/QueueCountStatPeriod"
       required:
         - periods
     QueueCounts:
@@ -5769,26 +5769,26 @@ components:
         labels:
           type: array
           items:
-            $ref: '#/components/schemas/Label'
+            $ref: "#/components/schemas/Label"
           readOnly: true
         cluster:
           allOf:
-            - $ref: '#/components/schemas/SimpleCluster'
+            - $ref: "#/components/schemas/SimpleCluster"
           readOnly: true
         assignment_set:
           type: array
           items:
-            $ref: '#/components/schemas/Assignment'
+            $ref: "#/components/schemas/Assignment"
           readOnly: true
         actionholder_set:
           type: array
           items:
-            $ref: '#/components/schemas/ActionHolder'
+            $ref: "#/components/schemas/ActionHolder"
           readOnly: true
         pending_activities:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRole'
+            $ref: "#/components/schemas/RpcRole"
           readOnly: true
         rfc_number:
           type: integer
@@ -5810,16 +5810,16 @@ components:
         final_approval:
           type: array
           items:
-            $ref: '#/components/schemas/FinalApproval'
+            $ref: "#/components/schemas/FinalApproval"
           readOnly: true
         iana_status:
           allOf:
-            - $ref: '#/components/schemas/IanaStatus'
+            - $ref: "#/components/schemas/IanaStatus"
           readOnly: true
         blocking_reasons:
           type: array
           items:
-            $ref: '#/components/schemas/RfcToBeBlockingReason'
+            $ref: "#/components/schemas/RfcToBeBlockingReason"
           readOnly: true
       required:
         - disposition
@@ -5850,7 +5850,7 @@ components:
         by_role:
           type: array
           items:
-            $ref: '#/components/schemas/QueueRoleTime'
+            $ref: "#/components/schemas/QueueRoleTime"
         legacy_included:
           type: boolean
       required:
@@ -5877,7 +5877,7 @@ components:
         counts:
           type: array
           items:
-            $ref: '#/components/schemas/PublishedStreamStatusCount'
+            $ref: "#/components/schemas/PublishedStreamStatusCount"
       required:
         - counts
         - end
@@ -5894,15 +5894,15 @@ components:
         streams:
           type: array
           items:
-            $ref: '#/components/schemas/PublishedStreamEnum'
+            $ref: "#/components/schemas/PublishedStreamEnum"
         statuses:
           type: array
           items:
-            $ref: '#/components/schemas/PublishedStatusEnum'
+            $ref: "#/components/schemas/PublishedStatusEnum"
         periods:
           type: array
           items:
-            $ref: '#/components/schemas/QueuePublishedStatPeriod'
+            $ref: "#/components/schemas/QueuePublishedStatPeriod"
       required:
         - periods
         - statuses
@@ -5929,7 +5929,7 @@ components:
         periods:
           type: array
           items:
-            $ref: '#/components/schemas/QueuePeriodStat'
+            $ref: "#/components/schemas/QueuePeriodStat"
       required:
         - periods
     RfcAuthor:
@@ -6005,11 +6005,11 @@ components:
           maxLength: 40
         draft:
           allOf:
-            - $ref: '#/components/schemas/Draft'
+            - $ref: "#/components/schemas/Draft"
           readOnly: true
         disposition:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           readOnly: true
         external_deadline:
           type: string
@@ -6025,11 +6025,11 @@ components:
             type: integer
         cluster:
           allOf:
-            - $ref: '#/components/schemas/SimpleCluster'
+            - $ref: "#/components/schemas/SimpleCluster"
           readOnly: true
         submitted_format:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           readOnly: true
         pages:
           type: integer
@@ -6043,50 +6043,50 @@ components:
           maxLength: 1000
         boilerplate:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           readOnly: true
           description: TLP IPR boilerplate option
         std_level:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           readOnly: true
           description: Current StdLevel
         publication_std_level:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           readOnly: true
           description: StdLevel at publication (blank until published)
         stream:
           allOf:
-            - $ref: '#/components/schemas/Name'
+            - $ref: "#/components/schemas/Name"
           readOnly: true
           description: Current stream
         authors:
           type: array
           items:
-            $ref: '#/components/schemas/RfcAuthor'
+            $ref: "#/components/schemas/RfcAuthor"
         shepherd:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         iesg_contact:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         assignment_set:
           type: array
           items:
-            $ref: '#/components/schemas/Assignment'
+            $ref: "#/components/schemas/Assignment"
           readOnly: true
         actionholder_set:
           type: array
           items:
-            $ref: '#/components/schemas/ActionHolder'
+            $ref: "#/components/schemas/ActionHolder"
           readOnly: true
         pending_activities:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRole'
+            $ref: "#/components/schemas/RpcRole"
           readOnly: true
         rfc_number:
           type: integer
@@ -6109,16 +6109,16 @@ components:
         subseries:
           type: array
           items:
-            $ref: '#/components/schemas/SubseriesMember'
+            $ref: "#/components/schemas/SubseriesMember"
           readOnly: true
         iana_status:
           allOf:
-            - $ref: '#/components/schemas/IanaStatus'
+            - $ref: "#/components/schemas/IanaStatus"
           readOnly: true
         additional_emails:
           type: array
           items:
-            $ref: '#/components/schemas/AdditionalEmail'
+            $ref: "#/components/schemas/AdditionalEmail"
           readOnly: true
         repository:
           type: string
@@ -6127,11 +6127,11 @@ components:
         blocking_reasons:
           type: array
           items:
-            $ref: '#/components/schemas/RfcToBeBlockingReason'
+            $ref: "#/components/schemas/RfcToBeBlockingReason"
           readOnly: true
         stream_manager:
           allOf:
-            - $ref: '#/components/schemas/BaseDatatrackerPerson'
+            - $ref: "#/components/schemas/BaseDatatrackerPerson"
           readOnly: true
         is_april_first_rfc:
           type: boolean
@@ -6149,7 +6149,7 @@ components:
       properties:
         reason:
           allOf:
-            - $ref: '#/components/schemas/BlockingReason'
+            - $ref: "#/components/schemas/BlockingReason"
           readOnly: true
         since_when:
           type: string
@@ -6233,7 +6233,7 @@ components:
         authors:
           type: array
           items:
-            $ref: '#/components/schemas/RfcAuthorRequest'
+            $ref: "#/components/schemas/RfcAuthorRequest"
         shepherd_id:
           type: integer
           writeOnly: true
@@ -6257,7 +6257,7 @@ components:
           description: Whether document has consensus (None=unknown)
         iana_status_slug:
           allOf:
-            - $ref: '#/components/schemas/IanaStatusSlugEnum'
+            - $ref: "#/components/schemas/IanaStatusSlugEnum"
           writeOnly: true
           description: |-
             Set the IANA status by providing the slug identifier.
@@ -6309,11 +6309,11 @@ components:
         capabilities:
           type: array
           items:
-            $ref: '#/components/schemas/Capability'
+            $ref: "#/components/schemas/Capability"
         roles:
           type: array
           items:
-            $ref: '#/components/schemas/RpcRole'
+            $ref: "#/components/schemas/RpcRole"
         is_active:
           type: boolean
         email:
@@ -6450,22 +6450,22 @@ components:
         rev:
           type: string
         stream:
-          $ref: '#/components/schemas/Name'
+          $ref: "#/components/schemas/Name"
         title:
           type: string
         pages:
           type: integer
         source_format:
-          $ref: '#/components/schemas/Name'
+          $ref: "#/components/schemas/Name"
         authors:
           type: array
           items:
-            $ref: '#/components/schemas/SubmissionAuthor'
+            $ref: "#/components/schemas/SubmissionAuthor"
         shepherd:
           type: string
           format: email
         std_level:
-          $ref: '#/components/schemas/Name'
+          $ref: "#/components/schemas/Name"
         datatracker_url:
           type: string
           format: uri
@@ -6524,7 +6524,7 @@ components:
         documents:
           type: array
           items:
-            $ref: '#/components/schemas/MinimalRfcToBe'
+            $ref: "#/components/schemas/MinimalRfcToBe"
         rfc_count:
           type: integer
           readOnly: true
@@ -6621,17 +6621,17 @@ components:
         - head_sha
     TimelineBand:
       type: object
-      description: 'An aggregate lane: blocked/working summary or one legacy label.'
+      description: "An aggregate lane: blocked/working summary or one legacy label."
       properties:
         kind:
-          $ref: '#/components/schemas/KindEnum'
+          $ref: "#/components/schemas/KindEnum"
         label:
           type: string
           nullable: true
         segments:
           type: array
           items:
-            $ref: '#/components/schemas/TimelineSegment'
+            $ref: "#/components/schemas/TimelineSegment"
       required:
         - kind
         - segments
@@ -6647,7 +6647,7 @@ components:
           format: date-time
           nullable: true
         kind:
-          $ref: '#/components/schemas/KindEnum'
+          $ref: "#/components/schemas/KindEnum"
         role:
           type: string
           nullable: true
@@ -6686,7 +6686,7 @@ components:
         segments:
           type: array
           items:
-            $ref: '#/components/schemas/TimelineSegment'
+            $ref: "#/components/schemas/TimelineSegment"
       required:
         - assignment_id
         - is_blocked

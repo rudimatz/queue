@@ -21,6 +21,32 @@ const _redactRequestInit = (init: RequestInit | undefined): RequestInit | undefi
   return newRequestInit
 }
 
+/**
+ * Read a fetch `Response.body` stream into a string.
+ * The stream can only be consumed once, so call this at most once per response.
+ */
+const readResponseBodyText = async (body: ReadableStream<Uint8Array<ArrayBuffer>> | null): Promise<string> => {
+  if (!body) {
+    return ''
+  }
+  const reader = body.getReader()
+  const decoder = new TextDecoder()
+  let text = ''
+  try {
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) {
+        break
+      }
+      text += decoder.decode(value, { stream: true })
+    }
+    text += decoder.decode()
+  } finally {
+    reader.releaseLock()
+  }
+  return text
+}
+
 export const getApiClient = (mode?: ApiMode) => {
   const PURPLE_PUBQ_API_BASE = process.env.PURPLE_PUBQ_API_BASE
   const basePath = mode === 'dev' ? 'http://localhost:8088' : (PURPLE_PUBQ_API_BASE ?? undefined)
@@ -92,7 +118,8 @@ export const apiPubqClustersRetrieveCached = async ({ api, clusterNumber }: ApiP
       apiPubqClustersRetrieveCache[cacheKey] = await api.apiPubqClustersRetrieve({ number: clusterNumber })
     } catch (e) {
       if (e instanceof ResponseError) {
-        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, e.cause, e.message, e.name)
+        const body = await readResponseBodyText(e.response.body)
+        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, body, e.cause, e.message, e.name)
       }
       throw e
     }
@@ -117,7 +144,8 @@ export const apiPubqQueueListCached = async ({ api, params }: ApiPubqQueueListCa
       ApiPubqQueueListCache[cacheKey] = await api.apiPubqQueueList(params)
     } catch (e) {
       if (e instanceof ResponseError) {
-        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, e.cause, e.message, e.name)
+        const body = await readResponseBodyText(e.response.body)
+        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, body, e.cause, e.message, e.name)
       }
       throw e
     }
