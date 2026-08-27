@@ -1,4 +1,4 @@
-import { Configuration, PurpleApi, type ApiPubqQueueListRequest, type Cluster, type PublicQueueItem } from '../../generated/purple_client/index.ts'
+import { Configuration, PurpleApi, ResponseError, type ApiPubqQueueListRequest, type Cluster, type PublicQueueItem } from '../../generated/purple_client/index.ts'
 import { getCacheKey } from './cache.ts'
 
 type ApiMode = 'prod' | 'dev'
@@ -88,7 +88,14 @@ export const apiPubqClustersRetrieveCached = async ({ api, clusterNumber }: ApiP
   const cacheKey = getCacheKey(clusterNumber)
   if (!apiPubqClustersRetrieveCache[cacheKey]) {
     // console.info('[apiPubqClustersRetrieveCached] cache miss', `cluster ${clusterNumber}`, { cacheKey })
-    apiPubqClustersRetrieveCache[cacheKey] = await api.apiPubqClustersRetrieve({ number: clusterNumber })
+    try {
+      apiPubqClustersRetrieveCache[cacheKey] = await api.apiPubqClustersRetrieve({ number: clusterNumber })
+    } catch (e) {
+      if (e instanceof ResponseError) {
+        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, e.cause, e.message, e.name)
+      }
+      throw e
+    }
   } else {
     // console.info('[apiPubqClustersRetrieveCached] cache hit', `cluster ${clusterNumber}`, { cacheKey })
   }
@@ -105,8 +112,15 @@ type ApiPubqQueueListCachedProps = {
 export const apiPubqQueueListCached = async ({ api, params }: ApiPubqQueueListCachedProps): Promise<PublicQueueItem[]> => {
   const cacheKey = getCacheKey(params)
   if (!ApiPubqQueueListCache[cacheKey]) {
-    // console.info('[apiPubqQueueListCached] cache miss', JSON.stringify(params))
-    ApiPubqQueueListCache[cacheKey] = await api.apiPubqQueueList(params)
+    try {
+      // console.info('[apiPubqQueueListCached] cache miss', JSON.stringify(params))
+      ApiPubqQueueListCache[cacheKey] = await api.apiPubqQueueList(params)
+    } catch (e) {
+      if (e instanceof ResponseError) {
+        console.error('API response error', `HTTP ${e.response.status} (${e.response.statusText})`, e.cause, e.message, e.name)
+      }
+      throw e
+    }
   } else {
     // console.info('[apiPubqQueueListCached] cache hit', JSON.stringify(params))
   }
