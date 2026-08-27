@@ -1018,6 +1018,7 @@ export class PurpleApi extends runtime.BaseAPI {
      */
     async apiPubqQueueListRaw(requestParameters: ApiPubqQueueListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PublicQueueItem>>> {
         const requestOptions = await this.apiPubqQueueListRequestOpts(requestParameters);
+        console.log("[apiPubqQueueListRaw] request options", JSON.stringify(requestOptions))
         const response = await this.request(requestOptions, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(PublicQueueItemFromJSON));
