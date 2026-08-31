@@ -1,6 +1,12 @@
 <template>
   <div>
-    <RpcTable>
+    <RpcTable class="w-full table-fixed">
+      <colgroup>
+        <col
+          v-for="column in table.getVisibleLeafColumns()"
+          :key="column.id"
+          :style="{ width: `${100 / table.getVisibleLeafColumns().length}%` }" />
+      </colgroup>
       <RpcThead>
         <tr v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
           <RpcTh v-for="header in headerGroup.headers" :key="header.id" :colSpan="header.colSpan"
@@ -130,6 +136,22 @@ const columns = [
       const bClusters = rowB.original.clusters
       return sortClusters(aClusters, bClusters)
     },
+  }),
+  columnHelper.accessor('finalApprovalCounts', {
+    header: 'Approvals Received',
+    cell: data => {
+      const value = data.getValue()
+      return value ? h('span', `${value.approved}/${value.total}`) : undefined
+    },
+    enableSorting: false,
+  }),
+  columnHelper.accessor('finalReviewStartedAtIso', {
+    header: 'Final Review Started On',
+    cell: data => {
+      const value = data.getValue()
+      return value ? h('time', { datetime: value }, value.split('T')[0]) : undefined
+    },
+    sortingFn: 'alphanumeric',
   }),
 ]
 
