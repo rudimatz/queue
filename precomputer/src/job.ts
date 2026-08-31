@@ -65,6 +65,7 @@ const main = async (): Promise<void> => {
   if (apiErrors.length) {
     console.error("[Clusters] Errors occured during fetching cluster API data", apiErrors)
     console.error("Cannot continue. Exiting...")
+    process.exitCode = 1
     return
   }
 
@@ -126,6 +127,7 @@ const main = async (): Promise<void> => {
   if (uploadErrors.length) {
     console.error("[Uploads] Errors occured during upload tasks", uploadErrors)
     console.error("Cannot continue. Exiting...")
+    process.exitCode = 1
     return
   }
 
@@ -136,6 +138,7 @@ const main = async (): Promise<void> => {
   })
   const validBucketKeys = uploadTasks.map(uploadTask => uploadTask.key)
   const keysToPurge = difference(existingBucketKeys, validBucketKeys)
+  let purgedCount = 0
   if (keysToPurge.length > 0) {
     console.log(`[Cleanup] File storage purge of ${keysToPurge.length} object(s)`)
     const { errors: purgeErrors } = await PromisePool.for(keysToPurge)
@@ -155,11 +158,19 @@ const main = async (): Promise<void> => {
       console.error("[Cleanup] There were errors purging files.", purgeErrors)
       console.error('[Cleanup] Bucket retains files that it shouldn\'t. This is bad.')
       console.error("Cannot continue. Exiting...")
+      process.exitCode = 1
+      return
     }
+    purgedCount = keysToPurge.length
   } else {
     console.log("[Cleanup] No need to purge any files from S3.")
   }
-  console.log("Done!")
+  console.log(
+    `Done! Precomputer run completed successfully: ${uploadTasks.length} file(s) uploaded, ${purgedCount} file(s) purged.`
+  )
 }
 
-main()
+main().catch((err) => {
+  console.error("[Fatal] Precomputer run failed with an unhandled error:", err)
+  process.exitCode = 1
+})
