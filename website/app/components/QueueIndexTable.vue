@@ -102,19 +102,26 @@ const columns = [
     header: 'Document',
     cell: (data) => {
       return h(
-        Anchor,
-        {
-          href: datatrackerDraftUrlBuilder(data.row.original.name),
-          class: [
-            ANCHOR_TAILWIND_STYLE,
-            'scroll-m-20' // ensure link targets aren't obscured by sticky header https://mailarchive.ietf.org/arch/msg/tools-discuss/KYJF-QY2U4qXWS2UVL16vMO_qn4/
-          ],
-          id: data.row.original.name
-        },
-        () => [
-          data.getValue(),
-          SPACE,
-          h(GraphicsNewWindowIcon)
+        'div',
+        { class: 'flex flex-col' },
+        [
+          h(
+            Anchor,
+            {
+              href: datatrackerDraftUrlBuilder(data.row.original.name),
+              class: [
+                ANCHOR_TAILWIND_STYLE,
+                'scroll-m-20' // ensure link targets aren't obscured by sticky header https://mailarchive.ietf.org/arch/msg/tools-discuss/KYJF-QY2U4qXWS2UVL16vMO_qn4/
+              ],
+              id: data.row.original.name
+            },
+            () => [
+              data.getValue(),
+              SPACE,
+              h(GraphicsNewWindowIcon)
+            ]
+          ),
+          h('span', { class: 'text-sm text-gray-600 dark:text-gray-400' }, data.row.original.title)
         ]
       )
     },
