@@ -39,10 +39,12 @@
     <ol
       v-if="finalReviewDraft.renderableApprovalLogMessages && finalReviewDraft.renderableApprovalLogMessages.length > 0"
       class="flex flex-col gap-2 text-sm">
-      <li v-for="approvalLog in finalReviewDraft.renderableApprovalLogMessages">
+      <li
+        v-for="approvalLog in finalReviewDraft.renderableApprovalLogMessages"
+        class="border-b border-gray-200 pb-2 last:border-b-0 dark:border-neutral-700">
         <component :is="approvalLog.logMessageComponent" />
         <p v-if="approvalLog.time" class="text-xs italic text-gray-600 dark:text-gray-400 mt-1">Log posted
-          <TimeStamp :dateTime="approvalLog.time" />
+          {{ approvalLog.time.toLocaleString(DateTime.DATETIME_SHORT) }}
         </p>
       </li>
     </ol>
