@@ -188,6 +188,7 @@ export const QueueCommonItemSchema = z.object({
   assignmentsByRoles: AssignmentsByRoleSchema.array().optional(),
   pages: z.number().optional(),
   enqueuedAtIso: z.string().optional(), // ISO date
+  finalReviewStartedAtIso: z.string().optional(), // ISO date
   ianaStatus: IanaStatusCommonSchema.optional(),
   approvalLogMessages: ApprovalLogMessageCommonSchema.array().optional(),
   group: z.string().optional(),
