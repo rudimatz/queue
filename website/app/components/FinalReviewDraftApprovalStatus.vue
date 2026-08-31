@@ -82,7 +82,7 @@ const columns = [
     header: 'Approver Comment',
     cell: (data) => {
       const value = data.getValue()
-      return value ? h(Linkify, { html: value }) : h('i', '(no comment)')
+      return value ? h(Linkify, { html: value }) : undefined
     },
     enableSorting: false
   }),
@@ -112,7 +112,7 @@ const columns = [
     cell: (data) => {
       const value = data.getValue()
       if (!value) {
-        return h('i', '(no available)')
+        return undefined
       }
       return h('time', { datetime: value }, value.split('T')[0])
     },
