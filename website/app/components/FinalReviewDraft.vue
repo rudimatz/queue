@@ -18,6 +18,13 @@
       <component :is="LabelsComponent" />
     </Heading>
 
+    <p v-if="finalReviewDraft.finalReviewStartedAtIso" class="text-sm">
+      Final Review started on
+      <time :datetime="finalReviewDraft.finalReviewStartedAtIso">
+        {{ finalReviewDraft.finalReviewStartedAtIso.split('T')[0] }}
+      </time>.
+    </p>
+
     <p v-if="finalReviewDraft.clusters" class="text-sm">This document is part of
       <template v-for="(cluster, index) in finalReviewDraft.clusters">
         <Anchor :href="clusterNumberPathBuilder(cluster)" :class="`${ANCHOR_TAILWIND_STYLE} font-bold`">
@@ -40,12 +47,14 @@
       v-if="finalReviewDraft.renderableApprovalLogMessages && finalReviewDraft.renderableApprovalLogMessages.length > 0"
       class="flex flex-col gap-2 text-sm">
       <li
-        v-for="approvalLog in finalReviewDraft.renderableApprovalLogMessages"
-        class="border-b border-gray-200 pb-2 last:border-b-0 dark:border-neutral-700">
+        v-for="(approvalLog, index) in finalReviewDraft.renderableApprovalLogMessages">
         <component :is="approvalLog.logMessageComponent" />
         <p v-if="approvalLog.time" class="text-xs italic text-gray-600 dark:text-gray-400 mt-1">Log posted
           {{ approvalLog.time.toLocaleString(DateTime.DATETIME_SHORT) }}
         </p>
+        <div
+          v-if="index < finalReviewDraft.renderableApprovalLogMessages.length - 1"
+          class="mt-2 w-1/2 border-b border-gray-200 dark:border-neutral-700" />
       </li>
     </ol>
     <p v-else class="italic text-sm">No notes available.</p>
