@@ -7,6 +7,8 @@
 Name | Type
 ------------ | -------------
 `slug` | string
+`name` | string
+`description` | string
 `isException` | boolean
 `isComplexity` | boolean
 `color` | [ColorEnum](ColorEnum.md)
@@ -21,6 +23,8 @@ import type { LabelRequest } from ''
 // TODO: Update the object below with actual values
 const example = {
   "slug": null,
+  "name": null,
+  "description": null,
   "isException": null,
   "isComplexity": null,
   "color": null,

@@ -262,8 +262,8 @@ paths:
           name: is_active
           schema:
             type: boolean
-          description: Filter by active status. A cluster is considered active if at
-            least one of its documents is not in terminal state (published/withdrawn).
+          description: Filter by active status. A cluster is considered active if more
+            than one of its documents is not in terminal state (published/withdrawn).
         - name: ordering
           required: false
           in: query
@@ -3890,9 +3890,7 @@ components:
           readOnly: true
         is_active:
           type: boolean
-          description: |-
-            A cluster is considered active if at least one of its documents is
-            in_progress.
+          description: Active only while more than one document is still unpublished.
           readOnly: true
       required:
         - number
@@ -4624,7 +4622,15 @@ components:
           readOnly: true
         slug:
           type: string
+          description: Stable machine key, auto-generated from name; referenced in
+            code.
           maxLength: 64
+        name:
+          type: string
+          description: Human-readable name
+          maxLength: 255
+        description:
+          type: string
         is_exception:
           type: boolean
         is_complexity:
@@ -4636,6 +4642,7 @@ components:
         is_public:
           type: boolean
       required:
+        - name
         - slug
     LabelRequest:
       type: object
@@ -4643,7 +4650,16 @@ components:
         slug:
           type: string
           minLength: 1
+          description: Stable machine key, auto-generated from name; referenced in
+            code.
           maxLength: 64
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name
+          maxLength: 255
+        description:
+          type: string
         is_exception:
           type: boolean
         is_complexity:
@@ -4655,6 +4671,7 @@ components:
         is_public:
           type: boolean
       required:
+        - name
         - slug
     LabelStat:
       type: object
@@ -5129,7 +5146,16 @@ components:
         slug:
           type: string
           minLength: 1
+          description: Stable machine key, auto-generated from name; referenced in
+            code.
           maxLength: 64
+        name:
+          type: string
+          minLength: 1
+          description: Human-readable name
+          maxLength: 255
+        description:
+          type: string
         is_exception:
           type: boolean
         is_complexity:
@@ -5359,9 +5385,7 @@ components:
           readOnly: true
         is_active:
           type: boolean
-          description: |-
-            A cluster is considered active if at least one of its documents is
-            in_progress.
+          description: Active only while more than one document is still unpublished.
           readOnly: true
       required:
         - number
@@ -5453,6 +5477,7 @@ components:
         cluster:
           allOf:
             - $ref: "#/components/schemas/SimpleCluster"
+          nullable: true
           readOnly: true
         assignment_set:
           type: array
@@ -5775,6 +5800,7 @@ components:
           allOf:
             - $ref: "#/components/schemas/SimpleCluster"
           readOnly: true
+          nullable: true
         assignment_set:
           type: array
           items:
@@ -6027,6 +6053,7 @@ components:
           allOf:
             - $ref: "#/components/schemas/SimpleCluster"
           readOnly: true
+          nullable: true
         submitted_format:
           allOf:
             - $ref: "#/components/schemas/Name"

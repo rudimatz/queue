@@ -34,11 +34,23 @@ export interface Label {
      */
     readonly id?: number;
     /**
-     * 
+     * Stable machine key, auto-generated from name; referenced in code.
      * @type {string}
      * @memberof Label
      */
     slug: string;
+    /**
+     * Human-readable name
+     * @type {string}
+     * @memberof Label
+     */
+    name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Label
+     */
+    description?: string;
     /**
      * 
      * @type {boolean}
@@ -78,6 +90,7 @@ export interface Label {
  */
 export function instanceOfLabel(value: object): value is Label {
     if (!('slug' in value) || value['slug'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
     return true;
 }
 
@@ -93,6 +106,8 @@ export function LabelFromJSONTyped(json: any, ignoreDiscriminator: boolean): Lab
         
         'id': json['id'] == null ? undefined : json['id'],
         'slug': json['slug'],
+        'name': json['name'],
+        'description': json['description'] == null ? undefined : json['description'],
         'isException': json['is_exception'] == null ? undefined : json['is_exception'],
         'isComplexity': json['is_complexity'] == null ? undefined : json['is_complexity'],
         'color': json['color'] == null ? undefined : ColorEnumFromJSON(json['color']),
@@ -113,6 +128,8 @@ export function LabelToJSONTyped(value?: Omit<Label, 'id'> | null, ignoreDiscrim
     return {
         
         'slug': value['slug'],
+        'name': value['name'],
+        'description': value['description'],
         'is_exception': value['isException'],
         'is_complexity': value['isComplexity'],
         'color': ColorEnumToJSON(value['color']),
